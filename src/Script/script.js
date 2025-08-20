@@ -32,7 +32,7 @@ function FetchData() {
 
 // Drag and Drop functionality
 function DragandDrop() {
-    let items = document.querySelectorAll('.column ul li');
+    let items = document.querySelectorAll('.column ul li'); 
     let columns = document.querySelectorAll('.column ul');
     let selectedItem = null;
 
@@ -48,16 +48,9 @@ function DragandDrop() {
         });
 
         column.addEventListener('drop', (e) => {
-            column.appendChild(selectedItem);
-
-            let taskId = selectedItem.getAttribute('data-id');
-            let newColumn = column.parentElement.id;
-            data[newColumn] = data[newColumn].filter(task => task.id != taskId);
-            data[newColumn].push({ id: taskId, title: selectedItem.textContent });
-            
-            FetchData();
-            selectedItem = null;
-
+                column.appendChild(selectedItem);
+                selectedItem = null; 
+                
         });
     });
 }
