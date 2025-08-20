@@ -28,11 +28,12 @@ function FetchData() {
         });
         columns[index].innerHTML = items;
     });
+    DragandDrop()
 }
 
 // Drag and Drop functionality
 function DragandDrop() {
-    let items = document.querySelectorAll('.column ul li'); 
+    let items = document.querySelectorAll('.column ul li');
     let columns = document.querySelectorAll('.column ul');
     let selectedItem = null;
 
@@ -48,11 +49,22 @@ function DragandDrop() {
         });
 
         column.addEventListener('drop', (e) => {
-                column.appendChild(selectedItem);
-                selectedItem = null; 
-                
+            e.preventDefault();
+
+            let oldColumn = selectedItem.parentElement.parentElement.id;
+            let taskId = selectedItem.getAttribute('data-id');
+            let title = selectedItem.textContent;
+
+            data[oldColumn] = data[oldColumn].filter(task => task.id != taskId);
+            
+            let newColumn = column.parentElement.id;
+            data[newColumn].push({ id: taskId, title });
+            selectedItem = null;
+            FetchData();
         });
+
     });
+    console.log(data)
 }
 
 
