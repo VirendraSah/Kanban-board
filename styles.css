@@ -20,6 +20,10 @@
 h2 {
     text-align: center;
 }
+.column h2{
+    padding-bottom: 10px;
+    border-bottom: 2px solid black;
+}
 
 .column ul li{
     background-color: red;
@@ -30,5 +34,5 @@ h2 {
 
 .column ul {
     list-style-type: none;
-    padding: 0;
+    padding:10px 0px 0px 0px ;
 }

@@ -1,3 +1,4 @@
+// Data for the Kanban board
 let data = {
     "todo": [
         { "id": 1, "title": "Task 1" },
@@ -16,6 +17,7 @@ let data = {
     ]
 }
 
+// Fetch the data
 function FetchData() {
     let columns = document.querySelectorAll('.column ul');
 
@@ -28,19 +30,19 @@ function FetchData() {
     });
 }
 
-
+// Drag and Drop functionality
 function DragandDrop() {
     let items = document.querySelectorAll('.column ul li'); 
     let columns = document.querySelectorAll('.column ul');
     let selectedItem = null;
 
-    items.forEach(item => {
+    items.forEach((item, index) => {
         item.addEventListener('dragstart', (e) => {
             selectedItem = e.target;
         });
     });
 
-    columns.forEach(column => {
+    columns.forEach((column, index) => {
         column.addEventListener('dragover', (e) => {
             e.preventDefault();
         });
